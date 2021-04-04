@@ -1,9 +1,10 @@
+require("dotenv").config();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const app = require("express")();
 const http = require("http").Server(app);
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const io = require("socket.io")(http, { cors: { origins: "*" } });
 
 http.listen(PORT, () => {
