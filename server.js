@@ -10,7 +10,7 @@ http.listen(PORT, () => {
   console.log(`listening on *:${PORT}`);
 });
 app.get("/", (req, res) => {
-  res.redirect(`/${uuid()}`);
+  res.send("Hello World!");
 });
 
 io.on("connection", (socket) => {
