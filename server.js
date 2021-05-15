@@ -15,10 +15,12 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
+  console.log();
   socket.emit("connection", socket.id);
   socket.on("join-room", (roomId, userId) => {
     socket.join(roomId);
     socket.broadcast.to(roomId).emit("user-connected", userId);
+    console.log(`userId - ${userId} roomId - ${roomId}`);
     socket.on("disconnect", () => {
       socket.emit("disconnection", userId);
       socket.broadcast.to(roomId).emit("user-disconnected", userId);
